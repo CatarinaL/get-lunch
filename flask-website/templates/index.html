@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <h1>Looking for {{search_term}}</h1>
+
+      {% if business_name %}
+      <!-- this is a Jinja "interface", -->
+      <p>Go to {{business_name}}!</p>
+      <!-- the html_name gets its value from the url-->
+      {% else %}
+      <p>Don't be a fussy eater. Search again</p>
+      {% endif %}
+
+      <p>Let's keep in touch!</p>
+      <div id="contact-form">
+          <form method="post" action="/signup">
+            <label for="email">Email address:</label>
+            <input type="email" id="email" name="email" required="required">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required="required">
+            <label for="content">Message:</label>
+            <input type="text" id="content" name="content" required="content">
+            <input type="submit" value="Submit" id="submit-button">
+
+          </form>
+      </div>
+
+  </body>
+</html>
