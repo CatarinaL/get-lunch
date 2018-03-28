@@ -41,9 +41,8 @@
         </div>
         <div class="response">
             {% if business_name %}
-            <!-- this is a Jinja "interface", -->
             <p>Go to {{business_name}}!</p>
-            <!-- the html_name gets its value from the url-->
+            <img class="img-fluid" src={{image_url}} alt="">
             {% else %}
             <p>Don't be a fussy eater. Search again...</p>
             {% endif %}

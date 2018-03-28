@@ -18,7 +18,9 @@ app = Flask(__name__)
 @app.route("/") # decorator
 def landing_page():
     try:
-        response = getbusiness.search_term("lunch")['name']
+        response = getbusiness.search_term("lunch")
+        business_name = response['name']
+        image_url = response['image_url']
     except HTTPError as error:
         sys.exit(
             'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
@@ -27,7 +29,7 @@ def landing_page():
                 error.read(),
             )
         )
-    return render_template("index.html", search_term = "lunch", business_name = response)
+    return render_template("index.html", search_term = "lunch", business_name = business_name, image_url=image_url)
 
 
 @app.route("/<search_term>/")

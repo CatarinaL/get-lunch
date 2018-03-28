@@ -64,7 +64,7 @@ def search(api_key, search_term, latitude, longitude):
     """
 
     url_params = {
-        'sort-by': "distance", #TODO: fix, sort not working
+        'sort-by': "distance", #TODO: fix?, sort is not working
         'term': search_term.replace(' ', '+'),
         'latitude': latitude.replace(' ', '+'),
         'longitude': longitude.replace(' ', '+'), #replace is just a string function, in this case to take care of our whitespace and substitute them by + so the url works
@@ -126,15 +126,6 @@ def query_api(search_term, latitude, longitude):
     return response
 
 def search_term(search_term):
-    #parser = argparse.ArgumentParser()
-
-    #parser.add_argument('-q', '--term', dest='term', default=DEFAULT_TERM,
-                        #type=str, help='Search term (default: %(default)s)')
-    #parser.add_argument('-l', '--location', dest='location',
-                        #default=DEFAULT_LOCATION, type=str,
-                        #help='Search location (default: %(default)s)')
-
-    #input_values = parser.parse_args()
 
     location = get_location()
     latitude = str(location['location']['lat'])
