@@ -1,0 +1,98 @@
+  .jumbotron {
+    padding-top: 20px;
+    min-height: 400px;
+    margin-bottom: 0;
+    background-image: url("images/board.jpg");
+    background-size: cover;
+    background-attachment: inherit;
+    padding-bottom: 20px;
+  }
+  .jumbotron h1 {
+    font: 'Holtwood One SC';
+    font-size: 70px;
+    font-weight: bold;
+  }
+  .navbar{
+    background-color: #4d4d4d;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    margin-bottom: 100px;
+  }
+  #Our-Mission{
+    background-color: white;
+    text-align: center;
+    font-family: georgia;
+    font-size: 20px;
+  }
+  
+  #social-icon {
+  height: 50px;
+  width: 50px;
+  }
+
+  .nav-link {
+    color: white;
+  }
+h2{
+    font-size: 50px;
+    font-family:  "Lobster";
+  }
+h3{
+  font-family: "Lobster";
+  font-size: 30px;
+}
+
+.container {
+  padding: 30px 20px 30px 20px;
+}
+#html {
+  background-color: #DCDCDC;
+  color: black;
+}
+.portfolio-item {
+  margin-bottom: 50px;
+}
+
+.navbar-brand{
+  a: hover{font-size:150%;}
+}
+.row {
+  padding: 30px;
+}
+
+.price{
+  background-color: #e6f2ff;
+  padding: 40px;
+  font-size: 30px;
+}
+
+.speciality{
+  background-color: #cce6ff;
+  padding: 40px;
+  font-size: 25px;
+}
+
+.col-md-4{
+  border: 2px solid;
+  border-radius: 20px;
+}
+/*.filter_price {
+    display: inline-block;
+    background-color: rgb(6, 31, 58);
+    color: rgb(240, 181, 168);
+    border-right-style: initial;
+    border-left-style: initial;
+    border-right-color: initial;
+    border-left-color: initial;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 0px;
+    border-width: 3px 0px;
+    border-image: initial;
+    border-bottom: 3px solid rgb(153, 233, 255);
+    border-top: 3px solid rgb(153, 233, 255);
+    margin: 10px;
+}*/

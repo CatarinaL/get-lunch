@@ -51,7 +51,7 @@ def request(host, path, api_key, url_params=None):
     #pp.pprint(response)
     return response.json()
 
-#search path - returns top 3 results
+#search path - returns top 3 (SEARCH_LIMIT) results
 def search(api_key, search_term, latitude, longitude):
     """Query the Search API by a search term and location.
 

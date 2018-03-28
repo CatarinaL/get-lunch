@@ -1,32 +1,110 @@
 <!doctype html>
 <html>
   <head>
-    <title></title>
+    <head>
+        <title>FoodFinder</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/font.css">
+        <script type="text/javascript" src="./static/js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="./static/js/bootstrap.bundle.min.js"></script>
+
+    </head>
   </head>
   <body>
-    <h1>Looking for {{search_term}}</h1>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="./index.html">FoodFinder</a>
+            </div>
 
-      {% if business_name %}
-      <!-- this is a Jinja "interface", -->
-      <p>Go to {{business_name}}!</p>
-      <!-- the html_name gets its value from the url-->
-      {% else %}
-      <p>Don't be a fussy eater. Search again</p>
-      {% endif %}
+             <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#About-us">About Us</a>
+                </li>
 
-      <p>Let's keep in touch!</p>
-      <div id="contact-form">
-          <form method="post" action="/signup">
-            <label for="email">Email address:</label>
-            <input type="email" id="email" name="email" required="required">
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required="required">
-            <label for="content">Message:</label>
-            <input type="text" id="content" name="content" required="content">
-            <input type="submit" value="Submit" id="submit-button">
+                <li class="nav-item">
+                    <a class="nav-link" href="#social">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-          </form>
-      </div>
+    <div class="jumbotron main">
+        <div class="container">
+                <h1>Looking for {{search_term}}</h1>
+            <blockquote>
+                <h3>Find places to eat near me</h3>
+            </blockquote>
+        </div>
+        <div class="response">
+            {% if business_name %}
+            <!-- this is a Jinja "interface", -->
+            <p>Go to {{business_name}}!</p>
+            <!-- the html_name gets its value from the url-->
+            {% else %}
+            <p>Don't be a fussy eater. Search again...</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="Filters" class="container_filter">
+
+     <div class="row">
+       <div class="col-md-4 price"><center>€</center></div>
+       <div class="col-md-4 price"><center>€€</center></div>
+       <div class="col-md-4 price"><center>€€€</center></div>
+     </div>
+     <div class="row">
+       <div class="col-md-4 speciality"><center>Vegan/Veg Friendly</center></div>
+       <div class="col-md-4 speciality"><center>Dog Friendly</center></div>
+       <div class="col-md-4 speciality"><center>Wheel chair accessible</center></div>
+     </div>
+
+   </div>
+
+   <div id="social" class="text-center">
+       <h3> Contact us </h3>
+              <p><strong>We would love to hear from you</strong> </p>
+       <div id="contact-form">
+           <form method="post" action="/signup">
+             <label for="email">Email address:</label>
+             <input type="email" id="email" name="email" required="required">
+             <label for="subject">Subject:</label>
+             <input type="text" id="subject" name="subject" required="required">
+             <label for="content">Message:</label>
+             <input type="text" id="content" name="content" required="content">
+             <input type="submit" value="Submit" id="submit-button">
+           </form>
+       </div>
+       <div class="row">
+         <div class="col-lg-2 col-sm-2">
+           </div>
+           <div class="col-lg-2 col-sm-2">
+             </div>
+           <div class="col-lg-2 col-sm-2">
+           <a href="https://www.instagram.com/coding_and_cocktails/">
+             <img id="social-icon"class="img-fluid" src="./images/instagram.png" alt="">
+           </a>
+           <p>Instagram</p>
+         </div>
+         <div class="col-lg-2 col-sm-2">
+           <a href="https://www.pinterest.ie/coding_and_cocktails/">
+             <img id="social-icon" class="img-fluid" src="./images/pinterest.png" alt="">
+           </a>
+           <p>Pinterest</p>
+       </div>
+     </div>
+   </div>
+
+   <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js"
+       data-dojo-config="usePlainJson: true, isDebug: false"></script>
+       <script type="text/javascript">
+       require(["mojo/signup-forms/Loader"], function(L) { L.start
+          ({"baseUrl":"mc.us14.list-manage.com","uuid":"a2b17298bcea38ab8af3e27ed","lid":"22b8221f25"}) })
+   </script>
 
   </body>
 </html>
