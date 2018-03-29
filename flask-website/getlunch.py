@@ -36,6 +36,7 @@ def landing_page():
 def search_by_term(search_term):
     try:
         response = getbusiness.search_term(search_term)['name']
+        image_url = getbusiness.search_term(search_term)['image_url']
     except HTTPError as error:
         sys.exit(
             'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
@@ -44,7 +45,7 @@ def search_by_term(search_term):
                 error.read(),
             )
         )
-    return render_template("index.html", search_term = search_term, business_name = response)
+    return render_template("index.html", search_term = search_term, business_name = response, image_url=image_url)
 
 app.run(debug = True) #TODO: debug is iseful for development
                     #but shouldn't be used in production

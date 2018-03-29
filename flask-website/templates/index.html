@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
         <link rel="stylesheet" type="text/css" href="../static/css/font.css">
+        <link href="https://fonts.googleapis.com/css?family=Londrina+Solid:300,900|Open+Sans:400,400i,800,800i" rel="stylesheet">
         <script type="text/javascript" src="./static/js/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="./static/js/bootstrap.bundle.min.js"></script>
 
@@ -32,37 +33,41 @@
         </div>
     </nav>
 
-    <div class="jumbotron main">
-        <div class="container">
-                <h1>Looking for {{search_term}}</h1>
-            <blockquote>
-                <h3>Find places to eat near me</h3>
-            </blockquote>
-        </div>
+    <div class="main container">
         <div class="response">
             {% if business_name %}
-            <p>Go to {{business_name}}!</p>
-            <img class="img-fluid" src={{image_url}} alt="">
+            <h1>Looking for {{search_term}}? Go to {{business_name}}!</h1>
+            <div class="response-body">
+              <img class="img-fluid response_img" src={{image_url}} alt="">
+              <div class="response-details">
+                <h2>{{business_name}}</h2>
+              </div>
+            </div>
             {% else %}
-            <p>Don't be a fussy eater. Search again...</p>
+            <h1>Looking for {{search_term}}?</h1>
+            <h2>Tough luck!</h2>
+            <div class="response-body no-find">
+              <p>Don't be a fussy eater. Search again...</p>
+            </div>
             {% endif %}
         </div>
     </div>
 
-    <div id="Filters" class="container_filter">
+    <div id="Filters" class="container-filter">
 
-     <div class="row">
-       <div class="col-md-4 price"><center>€</center></div>
-       <div class="col-md-4 price"><center>€€</center></div>
-       <div class="col-md-4 price"><center>€€€</center></div>
-     </div>
-     <div class="row">
-       <div class="col-md-4 speciality"><center>Vegan/Veg Friendly</center></div>
-       <div class="col-md-4 speciality"><center>Dog Friendly</center></div>
-       <div class="col-md-4 speciality"><center>Wheel chair accessible</center></div>
-     </div>
+       <div class="row">
+         <div class="col-md-4 price"><center>€</center></div>
+         <div class="col-md-4 price"><center>€€</center></div>
+         <div class="col-md-4 price"><center>€€€</center></div>
+       </div>
+       <div class="row">
+         <div class="col-md-4 speciality"><center>Vegan/Veg Friendly</center></div>
+         <div class="col-md-4 speciality"><center>Dog Friendly</center></div>
+         <div class="col-md-4 speciality"><center>Wheel chair accessible</center></div>
+       </div>
 
-   </div>
+    </div>
+
 
    <div id="social" class="text-center">
        <h3> Contact us </h3>
