@@ -9,11 +9,12 @@ from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.parse import urlencode
 
-app = Flask(__name__)
 
 #TODO: no results template
 #TODO: 404 page
 #TODO: Create route w/ filter/ and query params
+
+app = Flask(__name__)
 
 @app.route("/") # decorator
 def landing_page():
@@ -26,6 +27,7 @@ def search_by_term(search_term):
         business = getbusiness.get_business_from_list(search_results, 1)
         business_name = business['name']
         image_url = business['image_url']
+        #TODO: round distance number
         distance = business['distance']
     except HTTPError as error:
         sys.exit(
@@ -37,5 +39,8 @@ def search_by_term(search_term):
         )
     return render_template("index.html", distance=distance, search_term = search_term, business_name = business_name, image_url=image_url)
 
-app.run(debug = True) #TODO: debug is iseful for development
+
+if __name__ == "__main__":
+    # moved this here because of gunicorn error 98
+    app.run(debug = True) #TODO: debug is iseful for development
                     #but shouldn't be used in production
