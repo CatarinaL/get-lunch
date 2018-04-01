@@ -2,8 +2,10 @@
 <html>
   <head>
     <head>
-        <title>FoodFinder</title>
+        <title>LunchPad - Food Finder</title>
         <meta charset="utf-8">
+        <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
@@ -38,6 +40,7 @@
               <img class="img-fluid response_img" src={{image_url}} alt="Business Photo">
               <div class="response-details">
                 <h2 class="business-name">{{business_name}}</h2>
+                <p>{{distance}}m</p>
               </div>
             </div>
             {% else %}
