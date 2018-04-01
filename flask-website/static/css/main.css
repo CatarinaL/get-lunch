@@ -2,29 +2,76 @@
 /* No media query since this is the default in Bootstrap */
 
 /* COLOURS */
-/* yellow - #ffd707 */
+/*
+yellow - #ffd707
+red - #EA6B66
+green - #67AB9F
+lavender - #E1D5E7
+tangerine - #FFB570
+*/
 
 body{
-  font-family: "OpenSans";
+  font-family: "OpenSans", sans-serif;
   background-color: #ffd707;
 }
 
 /* TITLES */
-h1, h2, h3, h4 {font-family: "Londrina";}
+h1, h2, h3, h4 {
+  font-family: "Londrina", sans-serif;
+
+}
+.response h1{
+  color: #67AB9F;
+  text-transform: uppercase;
+}
+h1 .business-name {
+  color: #EA6B66;
+  font-weight: bold;
+}
+
 
 /* Navigation */
 
 .navbar {
   background-color: #fff;
+  color: #4D4D4D;
+}
+
+.navbar a {
+  color: #EA6B66;
+}
+.navbar a:hover,
+.navbar a:focus {
+  color: #67AB9F;
+}
+
+.navbar.actions-bottom {
+  background-color: #fff;
+  color: #4D4D4D;
+  text-align: center;
+  margin-top: 25px;
+  padding: 0 0;
+}
+
+.navbar.actions-bottom .col-md-6{
+  padding: 25px 0;
+}
+
+.navbar.actions-bottom .col-md-6:hover,
+.navbar.actions-bottom .col-md-6:focus{
+  background-color: #EA6B66;
+  color: #fff;
+  padding: 25px 0;
+  cursor: pointer;
 }
 
 /*containers*/
-.main.container {
+.main.container-fluid {
   background-color: #ffd707;
-  padding: 5px;
   margin-top: 20px;
 }
 .response {
+  padding: 5px;
   max-width: 600px;
   display: block;
   float:none;
@@ -55,8 +102,20 @@ h1, h2, h3, h4 {font-family: "Londrina";}
 
 .response-body.no-find {}
 
+div#filters {
+  background-color: #4D4D4D;
+  color: #fff;
+  padding: 25px 0;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+
+  /*containers*/
+  .main.container-fluid {
+    margin-top: 40px;
+  }
+
  }
 
 /* Medium devices (desktops, 992px and up) */
