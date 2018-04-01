@@ -9,9 +9,9 @@ from urllib.parse import quote
 from urllib.parse import urlencode
 from flaskwebsite import getbusiness
 
-# Latitude: 53.3670331, Longitude: -6.2482497
-DEFAULT_LATITUDE = "53.3870331"
-DEFAULT_LONGITUDE = "-6.2482497"
+# Latitude: 53.3242381, Longitude:-6.385788
+DEFAULT_LATITUDE = "53.3242381"
+DEFAULT_LONGITUDE = "-6.385788"
 #TODO: no results template
 #TODO: 404 page
 #TODO: Create route w/ filter/ and query params

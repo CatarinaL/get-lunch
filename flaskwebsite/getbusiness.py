@@ -60,7 +60,7 @@ def search(search_term, latitude, longitude):
     """
 
     url_params = {
-        'sort-by': "distance", #TODO: fix?, sort is not working
+        'sort-by': "rating", #TODO: fix?, sort is not working
         'term': search_term.replace(' ', '+'),
         'latitude': latitude.replace(' ', '+'),
         'longitude': longitude.replace(' ', '+'), #replace is just a string function, in this case to take care of our whitespace and substitute them by + so the url works
