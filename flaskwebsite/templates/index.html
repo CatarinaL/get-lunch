@@ -2,7 +2,7 @@
 <html>
   <head>
     <head>
-        <title>LunchPad - Food Finder</title>
+        <title>Lunchpad - Dublin based Food Finder</title>
         <meta charset="utf-8">
         <link rel="shortcut icon" href="../static/favicon.ico" type="image/x-icon">
         <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="../static/css/main.css">
         <link rel="stylesheet" type="text/css" href="../static/css/font.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="../static/js/util.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
     </head>
@@ -35,12 +36,18 @@
     <div class="main container-fluid">
         <div class="response row">
             {% if business_name %}
-            <h1>Looking for {{search_term}}? Get yourself to <span class="business-name">{{business_name}}</span></h1>
+            <h1>Looking for {{search_term}}? Get yourself to
+              <span class="business-name">{{business_name}}</span>
+            </h1>
             <div class="response-body card">
               <img class="img-fluid response_img" src={{image_url}} alt="Business Photo">
               <div class="response-details">
                 <h2 class="business-name">{{business_name}}</h2>
-                <p>{{distance}}m</p>
+                <p>{{distance}}m from
+                  <span id="user-pos">Dublin City Center - enable location sharing
+                    in your browser and reload for more accurate results!
+                  </span>
+                </p>
               </div>
             </div>
             {% else %}
@@ -52,12 +59,12 @@
             {% endif %}
         </div>
         <div class="actions-bottom navbar row">
-          <div class="col-md-6">Find another</div>
-
-            <a class="col-md-6" data-toggle="collapse" href="#filters" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a href="/" class="col-md-6" id="get-new-business">
+            Find another
+          </a>
+          <a class="col-md-6" data-toggle="collapse" href="#filters" role="button" aria-expanded="false" aria-controls="collapseExample">
               Filters
-            </a>
-
+          </a>
       </div>
 
     </div>

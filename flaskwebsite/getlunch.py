@@ -9,7 +9,9 @@ from urllib.parse import quote
 from urllib.parse import urlencode
 from flaskwebsite import getbusiness
 
-
+# Latitude: 53.3670331, Longitude: -6.2482497
+DEFAULT_LATITUDE = "53.3870331"
+DEFAULT_LONGITUDE = "-6.2482497"
 #TODO: no results template
 #TODO: 404 page
 #TODO: Create route w/ filter/ and query params
@@ -22,7 +24,9 @@ def landing_page():
 @app.route("/<search_term>/")
 def search_by_term(search_term):
     try:
-        search_results = getbusiness.by_search_term(search_term)
+        latitude = request.args.get("latitude", DEFAULT_LATITUDE)
+        longitude = request.args.get("longitude", DEFAULT_LONGITUDE)
+        search_results = getbusiness.by_search_term(search_term, latitude, longitude)
         business = getbusiness.get_business_from_list(search_results, 1)
         business_name = business['name']
         image_url = business['image_url']

@@ -22,10 +22,8 @@ API_KEY= 'zd2uwmgCgOAh4tq7X4XlO6Otfk64uUIPRjk3S6-aLK2U98pJdD27bPslfqNtV_Z5FYrGms
 API_HOST = 'https://api.yelp.com'
 SEARCH_PATH = '/v3/businesses/search'
 BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash
-LOCATION_API= 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyA8xV5zsXFHbbG_cDrN2XrxNOW8f1f34xc'
 # Defaults
 DEFAULT_TERM = 'lunch'
-DEFAULT_LOCATION = 'Dublin, IE'
 SEARCH_LIMIT = 5
 
 # user/request location
@@ -88,7 +86,7 @@ def query_api(search_term, latitude, longitude):
 
     #TODO: change default location to name of city using lat long parameters
     if not businesses:
-        print(f"No businesses for {search_term} in {DEFAULT_LOCATION} found." +\
+        print(f"No businesses for {search_term} found in your location." +\
         "Don\'t be such a fussy eater!")
         return
 
@@ -97,10 +95,7 @@ def query_api(search_term, latitude, longitude):
     return businesses
 
 
-def by_search_term(search_term):
-    location = get_location()
-    latitude = str(location['location']['lat'])
-    longitude = str(location['location']['lng'])
+def by_search_term(search_term, latitude, longitude):
     try:
         response = query_api(search_term, latitude, longitude)
         return response
