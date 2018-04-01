@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, send_file
 import requests
-import flaskwebsite.getbusiness
 import argparse
 import json
 import pprint
@@ -8,12 +7,12 @@ import sys
 from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.parse import urlencode
+from flaskwebsite import getbusiness
 
 
 #TODO: no results template
 #TODO: 404 page
 #TODO: Create route w/ filter/ and query params
-
 app = Flask(__name__)
 
 @app.route("/") # decorator
