@@ -13,6 +13,8 @@ tangerine - #FFB570
 body{
   font-family: "OpenSans", sans-serif;
   background-color: #ffd707;
+  /*padding bottom for sticky/fixed bottom navbar*/
+  padding-bottom: 100px;
 }
 
 /* TITLES */
@@ -33,12 +35,13 @@ h1 .business-name {
 /* Navigation */
 
 .navbar {
-  background-color: #fff;
+  /*background-color: #fff;*/
   color: #4D4D4D;
 }
 
 .navbar a {
   color: #EA6B66;
+  text-decoration: none;
 }
 .navbar a:hover,
 .navbar a:focus {
@@ -53,12 +56,12 @@ h1 .business-name {
   padding: 0 0;
 }
 
-.navbar.actions-bottom .col-md-6{
+.navbar.actions-bottom .col-sm-6{
   padding: 25px 0;
 }
 
-.navbar.actions-bottom .col-md-6:hover,
-.navbar.actions-bottom .col-md-6:focus{
+.navbar.actions-bottom .col-sm-6:hover,
+.navbar.actions-bottom .col-sm-6:focus{
   background-color: #EA6B66;
   color: #fff;
   padding: 25px 0;
@@ -81,8 +84,8 @@ h1 .business-name {
   display: block;
   float:none;
   margin: 0 auto;
-  max-width: 600px;
-  min-height: 700px;
+  /*max-width: 600px;*/
+  min-height: 500px;
   background-color: white;
   -webkit-box-shadow: 3px 3px 3px -1px rgba(120,120,120,0.6);
   -moz-box-shadow: 3px 3px 3px -1px rgba(120,120,120,0.6);
@@ -91,12 +94,13 @@ h1 .business-name {
   -moz-border-radius: 3px 3px 0px 0px;
   -webkit-border-radius: 3px 3px 0px 0px;
   border: 0px solid #fff;
+  margin-bottom: 20px;
 }
 
 .response-details {
   background-color: #fff;
   padding: 20px;
-  min-height: 100px;
+  min-height: 200px;
   width: 100%;
 }
 
@@ -106,6 +110,18 @@ div#filters {
   background-color: #4D4D4D;
   color: #fff;
   padding: 25px 0;
+  /*margin bottom to offset fixed bottom navbar*/
+  margin-bottom: -25px;
+}
+
+.crop {
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.crop img {
+    object-fit: cover;
 }
 
 /* Small devices (tablets, 768px and up) */

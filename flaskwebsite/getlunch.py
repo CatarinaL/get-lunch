@@ -4,6 +4,7 @@ import argparse
 import json
 import pprint
 import sys
+import random
 from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.parse import urlencode
@@ -28,15 +29,20 @@ def get_business_template(search_term):
     latitude = request.args.get("latitude", DEFAULT_LATITUDE)
     longitude = request.args.get("longitude", DEFAULT_LONGITUDE)
     business_result = search_by_term(search_term, latitude, longitude)
-    return render_template("index.html", distance=business_result['distance'],
+    return render_template("index.html",
+                            distance=round(business_result['distance'], 1),
                             search_term=search_term,
                             business_name=business_result['name'],
-                            image_url=business_result['image_url'])
+                            image_url=business_result['image_url'],
+                            longitude=business_result['coordinates']['longitude'],
+                            latitude=business_result['coordinates']['latitude'],)
 
 def search_by_term(search_term, latitude, longitude):
     try:
         search_results = getbusiness.by_search_term(search_term, latitude, longitude)
-        business = getbusiness.get_business_from_list(search_results, 0)
+        randindex = random.randint(0, (len(search_results) - 1))
+        print(randindex)
+        business = getbusiness.get_business_from_list(search_results, randindex)
         # pp.pprint(getbusiness.get_business_details(business['id']))
         #TODO: round distance number
     except HTTPError as error:

@@ -17,7 +17,7 @@
     </head>
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Lunchpad</a>
@@ -37,17 +37,23 @@
         <div class="response row">
             {% if business_name %}
             <h1>Looking for <span id="search-term">{{search_term}}</span>? Get yourself to
-              <span class="business-name" id="business-name-1">{{business_name}}</span>
+              <span class="business-name">{{business_name}}</span>
             </h1>
             <div class="response-body card">
-              <img class="img-fluid response_img" id="business-photo" src={{image_url}} alt="Business Photo">
+              <div class="crop">
+                <img class="img-fluid response_img" id="business-photo" src={{image_url}} alt="Business Photo">
+              </div>
               <div class="response-details">
-                <h2 class="business-name" id="business-name-2">{{business_name}}</h2>
+                <h2 class="business-name">{{business_name}}</h2>
                 <p><span id="user-distance">{{distance}}</span>m from
                   <span id="user-location">Dublin City Center - enable location sharing
                     in your browser and reload for more accurate results!
                   </span>
                 </p>
+                <a id="directions-maps"
+                  href="https://www.google.com/maps/dir/Current+Location/{{latitude}},{{longitude}}"
+                  >Directions
+                </a>
               </div>
             </div>
             {% else %}
@@ -58,11 +64,11 @@
             </div>
             {% endif %}
         </div>
-        <div class="actions-bottom navbar row">
-          <a class="col-md-6" id="get-new-business">
+        <div class="actions-bottom navbar row fixed-bottom">
+          <a class="col-sm-6" id="get-new-business">
             Find another
           </a>
-          <a class="col-md-6" data-toggle="collapse" href="#filters" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a class="col-sm-6" data-toggle="collapse" href="#filters" role="button" aria-expanded="false" aria-controls="collapseExample">
               Filters
           </a>
       </div>

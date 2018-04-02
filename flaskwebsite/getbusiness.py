@@ -24,7 +24,7 @@ SEARCH_PATH = '/v3/businesses/search'
 BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash
 # Defaults
 DEFAULT_TERM = 'lunch'
-SEARCH_LIMIT = 5
+SEARCH_LIMIT = 7
 
 # user/request location
 def get_location():

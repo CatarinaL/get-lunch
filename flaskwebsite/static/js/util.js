@@ -26,11 +26,16 @@ function getBusiness() {
            //document.getElementById("user-location");
            $(".business-name").text(data["name"]);
            $("#business-photo").attr("src", data["image_url"]);
-           $("#user-location").text(" Latitude: " + $.mynamespace.latitude +
-                                   ", Longitude: " + $.mynamespace.longitude);
-           $("#user-distance").text(data["distance"]);
+           var mapsOrigin = "&origin=" + $.mynamespace.latitude + "," + $.mynamespace.longitude;
+           var mapsDestination = "&destination=" + data["coordinates"]["latitude"] + "," + data["coordinates"]["longitude"];
+           var mapsPath = "https://www.google.com/maps/dir/?api=1" + mapsOrigin + mapsDestination;
+           $("#user-location").text("your location.");
+           $("#user-distance").text(Math.round(data["distance"]));
+           $("#directions-maps").attr("href", mapsPath);
          });
 }
+
+
 
 
 // function showPosition(position) {
