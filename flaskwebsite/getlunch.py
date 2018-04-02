@@ -9,9 +9,10 @@ from urllib.parse import quote
 from urllib.parse import urlencode
 from flaskwebsite import getbusiness
 
-# Latitude: 53.3242381, Longitude:-6.385788
-DEFAULT_LATITUDE = "53.3242381"
-DEFAULT_LONGITUDE = "-6.385788"
+# DUBLIN - Latitude: 53.3242381, Longitude:-6.385788
+DEFAULT_LATITUDE = 53.3242381
+DEFAULT_LONGITUDE = -6.385788
+pp = pprint.PrettyPrinter(indent=3)
 #TODO: no results template
 #TODO: 404 page
 #TODO: Create route w/ filter/ and query params
@@ -19,19 +20,25 @@ app = Flask(__name__)
 
 @app.route("/") # decorator
 def landing_page():
-    return search_by_term("lunch")
+    return get_business_template("lunch")
 
 @app.route("/<search_term>/")
-def search_by_term(search_term):
+def get_business_template(search_term):
+    # request.args is a dictionary with the url GET parameters
+    latitude = request.args.get("latitude", DEFAULT_LATITUDE)
+    longitude = request.args.get("longitude", DEFAULT_LONGITUDE)
+    business_result = search_by_term(search_term, latitude, longitude)
+    return render_template("index.html", distance=business_result['distance'],
+                            search_term=search_term,
+                            business_name=business_result['name'],
+                            image_url=business_result['image_url'])
+
+def search_by_term(search_term, latitude, longitude):
     try:
-        latitude = request.args.get("latitude", DEFAULT_LATITUDE)
-        longitude = request.args.get("longitude", DEFAULT_LONGITUDE)
         search_results = getbusiness.by_search_term(search_term, latitude, longitude)
-        business = getbusiness.get_business_from_list(search_results, 1)
-        business_name = business['name']
-        image_url = business['image_url']
+        business = getbusiness.get_business_from_list(search_results, 0)
+        # pp.pprint(getbusiness.get_business_details(business['id']))
         #TODO: round distance number
-        distance = business['distance']
     except HTTPError as error:
         sys.exit(
             'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
@@ -40,8 +47,17 @@ def search_by_term(search_term):
                 error.read(),
             )
         )
-    return render_template("index.html", distance=distance, search_term = search_term, business_name = business_name, image_url=image_url)
+    return business
 
+# ajax
+@app.route('/getbusiness/')
+def get_business_ajax():
+    latitude = request.args.get("latitude", DEFAULT_LATITUDE)
+    longitude = request.args.get("longitude", DEFAULT_LONGITUDE)
+    #print(f"TEST {request.args}")
+    search_term = "lunch"
+    business_result = search_by_term(search_term, latitude, longitude)
+    return json.dumps(business_result)
 
 if __name__ == "__main__":
     # moved this here because of gunicorn error 98

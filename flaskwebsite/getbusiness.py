@@ -60,14 +60,14 @@ def search(search_term, latitude, longitude):
     """
 
     url_params = {
-        'sort-by': "rating", #TODO: fix?, sort is not working
+        'sort_by': "distance", #TODO: fix?, sort is not working
         'term': search_term.replace(' ', '+'),
-        'latitude': latitude.replace(' ', '+'),
-        'longitude': longitude.replace(' ', '+'), #replace is just a string function, in this case to take care of our whitespace and substitute them by + so the url works
+        'latitude': latitude,
+        'longitude': longitude, #replace is just a string function, in this case to take care of our whitespace and substitute them by + so the url works
         'limit': SEARCH_LIMIT,
-        'open-now': "true", # we only want open places
+        'open_now': True, # we only want open places
         'price': "1,2,3",
-        'radius': '1500',
+        'radius': 1500,
     }
     #request returns full json response for results of query
     #pp.pprint(api_request(API_HOST, SEARCH_PATH, API_KEY, url_params=url_params))
@@ -115,7 +115,6 @@ def get_business_from_list(businesses, index=0):
         businesses (list): list of businesses returned by query_api()
         index (int): The index of object in list
     """
-
     return businesses[index]
 
 def get_distance(businesses, index=0):

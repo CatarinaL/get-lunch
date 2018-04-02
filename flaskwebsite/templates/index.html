@@ -36,22 +36,22 @@
     <div class="main container-fluid">
         <div class="response row">
             {% if business_name %}
-            <h1>Looking for {{search_term}}? Get yourself to
-              <span class="business-name">{{business_name}}</span>
+            <h1>Looking for <span id="search-term">{{search_term}}</span>? Get yourself to
+              <span class="business-name" id="business-name-1">{{business_name}}</span>
             </h1>
             <div class="response-body card">
-              <img class="img-fluid response_img" src={{image_url}} alt="Business Photo">
+              <img class="img-fluid response_img" id="business-photo" src={{image_url}} alt="Business Photo">
               <div class="response-details">
-                <h2 class="business-name">{{business_name}}</h2>
-                <p>{{distance}}m from
-                  <span id="user-pos">Dublin City Center - enable location sharing
+                <h2 class="business-name" id="business-name-2">{{business_name}}</h2>
+                <p><span id="user-distance">{{distance}}</span>m from
+                  <span id="user-location">Dublin City Center - enable location sharing
                     in your browser and reload for more accurate results!
                   </span>
                 </p>
               </div>
             </div>
             {% else %}
-            <h1>Looking for {{search_term}}?</h1>
+            <h1>Looking for <span id="search_term">{{search_term}}</span>?</h1>
             <h2>Tough luck!</h2>
             <div class="response-body no-find">
               <p>Don't be a fussy eater. Search again...</p>
@@ -59,7 +59,7 @@
             {% endif %}
         </div>
         <div class="actions-bottom navbar row">
-          <a href="/" class="col-md-6" id="get-new-business">
+          <a class="col-md-6" id="get-new-business">
             Find another
           </a>
           <a class="col-md-6" data-toggle="collapse" href="#filters" role="button" aria-expanded="false" aria-controls="collapseExample">
