@@ -29,7 +29,12 @@ def get_business_template(search_term):
     latitude = request.args.get("latitude", DEFAULT_LATITUDE)
     longitude = request.args.get("longitude", DEFAULT_LONGITUDE)
     business_result = search_by_term(search_term, latitude, longitude)
-    return render_template("index.html",
+    if business_result is None:
+        #bla get error template here?
+        print("Tough luck - business object is none")
+        return render_template("index.html")
+    else:
+        return render_template("index.html",
                             distance=round(business_result['distance'], 1),
                             search_term=search_term,
                             business_name=business_result['name'],
@@ -40,9 +45,15 @@ def get_business_template(search_term):
 def search_by_term(search_term, latitude, longitude):
     try:
         search_results = getbusiness.by_search_term(search_term, latitude, longitude)
-        randindex = random.randint(0, (len(search_results) - 1))
-        print(randindex)
-        business = getbusiness.get_business_from_list(search_results, randindex)
+        try:
+            randindex = random.randint(0, (len(search_results) - 1))
+        except TypeError:
+            # error template here
+            pass
+        else:
+            print(randindex)
+            business = getbusiness.get_business_from_list(search_results, randindex)
+            return business
         # pp.pprint(getbusiness.get_business_details(business['id']))
         #TODO: round distance number
     except HTTPError as error:
@@ -53,7 +64,6 @@ def search_by_term(search_term, latitude, longitude):
                 error.read(),
             )
         )
-    return business
 
 # ajax
 @app.route('/getbusiness/')
