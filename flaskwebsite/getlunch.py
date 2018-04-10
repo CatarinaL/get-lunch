@@ -23,10 +23,6 @@ app = Flask(__name__)
 def landing_page():
     return get_business_template("lunch")
 
-@app.route("/about") # decorator
-def landing_page():
-    return render_template("about.html")
-
 @app.route("/<search_term>/")
 def get_business_template(search_term):
     # request.args is a dictionary with the url GET parameters
