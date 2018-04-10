@@ -19,9 +19,9 @@ pp = pprint.PrettyPrinter(indent=3)
 #TODO: Create route w/ filter/ and query params
 app = Flask(__name__)
 
-@app.route("/") # decorator
-def landing_page():
-    return get_business_template("lunch")
+@app.route("/about") # decorator
+def about_us_template():
+    return render_template("about.html")
 
 @app.route("/<search_term>/")
 def get_business_template(search_term):
