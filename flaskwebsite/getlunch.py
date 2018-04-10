@@ -23,7 +23,7 @@ app = Flask(__name__)
 def landing_page():
     return get_business_template("lunch")
 
-@app.route("/<search_term>/")
+@app.route("/<search_term>")
 def get_business_template(search_term):
     # request.args is a dictionary with the url GET parameters
     latitude = request.args.get("latitude", DEFAULT_LATITUDE)
@@ -64,6 +64,10 @@ def get_business_ajax():
     search_term = "lunch"
     business_result = search_by_term(search_term, latitude, longitude)
     return json.dumps(business_result)
+
+@app.route("/about/") # decorator
+def about_page():
+    return render_template("about.html")
 
 if __name__ == "__main__":
     # moved this here because of gunicorn error 98
